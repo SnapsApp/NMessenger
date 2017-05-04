@@ -312,3 +312,18 @@ open class CollectionViewContentNode: ContentNode,ASCollectionDelegate,ASCollect
     }
     
 }
+
+extension CollectionViewContentNode {
+    
+    public func setShowsHorizontalScrollIndicator(_ visible: Bool) {
+        self.collectionViewMessageNode.view.showsHorizontalScrollIndicator = visible
+    }
+    
+    public func setShowsVerticalScrollIndicator(_ visible: Bool) {
+        self.collectionViewMessageNode.view.showsVerticalScrollIndicator = visible
+    }
+    
+    public func setCollectionViewPagingEnabled(_ enabled: Bool) {
+        self.collectionViewMessageNode.view.isPagingEnabled = enabled
+    }
+}

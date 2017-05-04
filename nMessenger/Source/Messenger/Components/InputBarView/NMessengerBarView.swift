@@ -201,11 +201,11 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
     @IBAction open func sendButtonClicked(_ sender: AnyObject) {
         textInputViewHeight.constant = textInputViewHeightConst
         textInputAreaViewHeight.constant = textInputViewHeightConst+10
-        if self.textInputView.text != ""
-        {
-            _ = self.controller.sendText(self.textInputView.text,isIncomingMessage: false)
-            self.textInputView.text = ""
-        }
+//        if self.textInputView.text != ""
+//        {
+//            _ = self.controller.sendText(self.textInputView.text,isIncomingMessage: false)
+//            self.textInputView.text = ""
+//        }
     }
     /**
      Plus button selector
