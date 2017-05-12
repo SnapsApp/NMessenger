@@ -94,7 +94,7 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
         textInputView.delegate = self
         self.sendButton.isEnabled = false
         cameraVC.cameraDelegate = self
-
+        self.textInputView.pasteDelegate = self
     }
     
     //MARK: TextView delegate methods
@@ -279,5 +279,29 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
     open func cameraCancelSelection() {
         cameraVC.dismiss(animated: true, completion: nil)
     }
+}
 
+extension NMessengerBarView: SMITextViewPasteDelegate {
+    
+    open func pasteTapped(_ sender: Any?) {
+        print("Forward to controller: \(self.controller)")
+    }
+}
+
+private var delegatePathKey: UInt8 = 0
+
+extension UITextView {
+    
+    open override func paste(_ sender: Any?) {
+        self.pasteDelegate?.pasteTapped(sender)
+    }
+    
+    var pasteDelegate: SMITextViewPasteDelegate? {
+        get { return objc_getAssociatedObject(self, &delegatePathKey) as? SMITextViewPasteDelegate }
+        set { objc_setAssociatedObject(self, &delegatePathKey, newValue, .OBJC_ASSOCIATION_RETAIN) }
+    }
+}
+
+protocol SMITextViewPasteDelegate {
+    func pasteTapped(_ sender: Any?)
 }

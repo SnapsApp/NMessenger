@@ -63,3 +63,4 @@ open class InputBarView: UIView, InputBarViewProtocol {
     }
     
 }
+
