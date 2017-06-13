@@ -82,6 +82,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
         super.viewDidLoad()
         self.allowsEditing = true
         self.delegate = self
+        self.modalPresentationStyle = .overCurrentContext
         initView()
     }
     

@@ -75,9 +75,13 @@ open class ImageContentNode: ContentNode {
      */
     override open func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        let width = constrainedSize.max.width
+        var width = self.imageMessageNode.image?.size.width ?? constrainedSize.max.width
+        width = min(width, constrainedSize.max.width)
+        
+        let height = self.imageMessageNode.image?.size.height ?? width * 4/3
         self.imageMessageNode.style.width = ASDimension(unit: .points, value: width)
-        self.imageMessageNode.style.height = ASDimension(unit: .points, value: width/4*3)
+        self.imageMessageNode.style.height = ASDimension(unit: .points, value: height)
+        
         let absLayout = ASAbsoluteLayoutSpec()
         absLayout.sizing = .sizeToFit
         absLayout.children = [self.imageMessageNode]
@@ -124,5 +128,8 @@ open class ImageContentNode: ContentNode {
         }
     }
     
+    public func setImageContentMode(_ mode: UIViewContentMode) {
+        self.imageMessageNode.contentMode = mode
+    }
 }
 

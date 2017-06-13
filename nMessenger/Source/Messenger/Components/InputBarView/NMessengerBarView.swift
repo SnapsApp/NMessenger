@@ -284,7 +284,7 @@ open class NMessengerBarView: InputBarView, UITextViewDelegate, CameraViewDelega
 extension NMessengerBarView: SMITextViewPasteDelegate {
     
     open func pasteTapped(_ sender: Any?) {
-        print("Forward to controller: \(self.controller)")
+        self.controller.paste(sender)
     }
 }
 

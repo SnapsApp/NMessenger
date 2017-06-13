@@ -123,6 +123,8 @@ open class NMessengerViewController: UIViewController, UITextViewDelegate, NMess
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(NMessengerViewController.respondToSwipeGesture(_:)))
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
         self.inputBarView.textInputAreaView.addGestureRecognizer(swipeDown)
+        
+        self.definesPresentationContext = true
     }
     
     override open func viewDidAppear(_ animated: Bool) {
